@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="libs/bootstrap.css">
+    <link rel="stylesheet" href="libs/aos.css">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Login</title>
+</head>
+<body>
+<main>
+    <div class="center_block">
+        <div class="hello" data-aos="fade" data-aos-duration="2000">
+            <form action="" method="post">
+                <h1 class="text-center">LogIn</h1>
+                <label>Email:</label>
+                <div class="input-group">
+                    <input type="email" class="form-control" name="email">
+                </div>
+                <br>
+                <label>Password:</label>
+                <div class="input-group">
+                    <input type="password" class="form-control" name="password">
+                </div>
+                <br>
+                <div class="input-group">
+                    <label>Remember Me</label>
+                    <input class="mt-1 ml-2" type="checkbox" name="remember">
+                    <div class="text-right w-100">
+                        <button class="btn btn-primary" name="signIn">LogIn</button>
+                    </div>
+                </div>
+                <br>
+                <div class="input-group">
+                    <div class="text-right w-100">
+                        <a href="reset">Forgot your password?</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+<script src="libs/jquery-3.3.1.min.js"></script>
+<script src="libs/bootstrap.js"></script>
+<script src="libs/aos.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
