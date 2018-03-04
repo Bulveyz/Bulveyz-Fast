@@ -6,14 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Twig\\' => array($vendorDir . '/twig/twig/src'),
-    'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
-    'Symfony\\Component\\Translation\\' => array($vendorDir . '/symfony/translation'),
-    'RedBeanPHP\\' => array($vendorDir . '/gabordemooij/redbean/RedBeanPHP'),
     'Model\\' => array($baseDir . '/App/Models'),
-    'Dotenv\\' => array($vendorDir . '/vlucas/phpdotenv/src'),
     'Controllers\\' => array($baseDir . '/App/Controllers'),
     'Classes\\' => array($baseDir . '/App/Classes'),
-    'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
-    'Bulveyz\\' => array($vendorDir . '/bulveyz/bulveyz/src/Bulveyz'),
 );
