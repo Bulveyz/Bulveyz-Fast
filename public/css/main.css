@@ -1,0 +1,43 @@
+.center_block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100vh;
+    width: 100%;
+}
+
+.center_block form {
+    border: 1px solid #ddd;
+    padding: 40px;
+    width: 400px;
+}
+
+.container {
+    padding-top: 30px;
+}
+
+.container a {
+    color: #4e555b;
+    margin: 10px;
+}
+
+.hello h1 {
+    font-size: 80px;
+    letter-spacing: 5px;
+    font-weight: lighter;
+    color: #4e4e4e;
+}
+
+.hello p {
+    letter-spacing: 2px;
+    font-weight: lighter;
+    color: #4e4e4e;
+    margin-bottom: 90px;
+}
+
+.hello__link a {
+    margin: 20px;
+    color: #4e555b;
+}
+

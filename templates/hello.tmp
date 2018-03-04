@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="libs/bootstrap.css">
+    <link rel="stylesheet" href="libs/aos.css">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Document</title>
+</head>
+<body>
+<main>
+    {% if(auth) %}
+        <div class="container links text-right">
+            <a href="/logout">LogOut</a>
+        </div>
+        {% else %}
+        {% if(authMode == 'true') %}
+            <div class="container links text-right">
+                <a href="login">LogIn</a>
+                <a href="register">SignUp</a>
+            </div>
+        {% endif %}
+    {% endif %}
+    <div class="center_block">
+        <div class="hello" data-aos="fade" data-aos-duration="2000">
+            <h1 class="text-center">Bulveyz</h1>
+            <p class="text-center">
+                Very simple and smart framework for PHP!
+            </p>
+
+            <div class="hello__link text-center">
+                <a href="bulveyz/doc">GitHub</a>
+                <a href="asd">Bulveyz Framework</a>
+                <a href="asd">Documentation</a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="libs/jquery-3.3.1.min.js"></script>
+<script src="libs/bootstrap.js"></script>
+<script src="libs/aos.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

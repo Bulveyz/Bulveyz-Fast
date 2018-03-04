@@ -1,0 +1,20 @@
+{
+    "name": "bulveyz/bulveyz-fast",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Ruslan Ibragimov",
+            "email": "rus131354@icloud.com"
+        }
+    ],
+    "require": {
+        "bulveyz/bulveyz": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Controllers\\": "App/Controllers/",
+            "Model\\": "App/Models/",
+            "Classes\\": "App/Classes/"
+        }
+    }
+}
