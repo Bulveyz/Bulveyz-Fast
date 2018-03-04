@@ -5,7 +5,15 @@
       <sourceFolder url="file://$MODULE_DIR$/App/Models" isTestSource="false" packagePrefix="Model\" />
       <sourceFolder url="file://$MODULE_DIR$/App/Classes" isTestSource="false" packagePrefix="Classes\" />
       <sourceFolder url="file://$MODULE_DIR$/App/Controllers" isTestSource="false" packagePrefix="Controllers\" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/bulveyz/bulveyz" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/gabordemooij/redbean" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/kint-php/kint" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/nesbot/carbon" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-mbstring" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/translation" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/twig/twig" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/vlucas/phpdotenv" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

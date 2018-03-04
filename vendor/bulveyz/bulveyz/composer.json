@@ -1,0 +1,28 @@
+{
+    "name": "bulveyz/bulveyz",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bulveyz",
+            "email": "rus131354@icloud.com"
+        }
+    ],
+    "require": {
+        "gabordemooij/redbean": "^5.0",
+        "twig/twig": "~2.0",
+        "kint-php/kint": "^2.2",
+        "nesbot/carbon": "~1.18",
+        "vlucas/phpdotenv": "^2.4"
+    },
+    "autoload": {
+        "files": [
+            "src/Bulveyz/Helpers/helpers.php",
+            "src/Bulveyz/Plugins/plugins.php"
+        ],
+        "psr-4": {
+            "Bulveyz\\": "src/Bulveyz/"
+        },
+        "classmap": ["src"]
+    }
+}

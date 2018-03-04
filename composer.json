@@ -8,7 +8,7 @@
         }
     ],
     "require": {
-
+        "bulveyz/bulveyz": "^1.0"
     },
     "autoload": {
         "psr-4": {
