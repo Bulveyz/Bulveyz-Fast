@@ -1,8 +1,8 @@
 [
     {
         "name": "bulveyz/bulveyz",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
+        "version": "v1.0.0",
+        "version_normalized": "1.0.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/Bulveyz/Bulveyz.git",
@@ -23,7 +23,7 @@
         },
         "time": "2018-03-04T13:35:56+00:00",
         "type": "library",
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "files": [
                 "src/Bulveyz/Helpers/helpers.php",

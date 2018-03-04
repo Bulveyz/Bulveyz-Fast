@@ -4,11 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0aec0bebe1271b264f0a2e400bbd86d0",
+    "content-hash": "13a50b94b1dd5914fae5850f0351a5c1",
     "packages": [
         {
             "name": "bulveyz/bulveyz",
-            "version": "dev-master",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Bulveyz/Bulveyz.git",
@@ -451,9 +451,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "bulveyz/bulveyz": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
