@@ -1,6 +1,7 @@
 {
     "name": "bulveyz/bulveyz-fast",
     "type": "project",
+    "license": "MIT",
     "authors": [
         {
             "name": "Ruslan Ibragimov",
@@ -8,7 +9,7 @@
         }
     ],
     "require": {
-
+        "bulveyz/bulveyz": "^1.0"
     },
     "autoload": {
         "psr-4": {
