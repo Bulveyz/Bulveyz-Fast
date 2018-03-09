@@ -12,18 +12,7 @@
 </head>
 <body>
 <main>
-    {% if(auth) %}
-        <div class="container links text-right">
-            <a href="/logout">LogOut</a>
-        </div>
-        {% else %}
-        {% if(authMode == 'true') %}
-            <div class="container links text-right">
-                <a href="login">LogIn</a>
-                <a href="register">SignUp</a>
-            </div>
-        {% endif %}
-    {% endif %}
+    {% include 'main/header.tmp' %}
     <div class="center_block">
         <div class="hello" data-aos="fade" data-aos-duration="2000">
             <h1 class="text-center">Bulveyz</h1>
@@ -32,9 +21,8 @@
             </p>
 
             <div class="hello__link text-center">
-                <a href="bulveyz/doc">GitHub</a>
-                <a href="asd">Bulveyz Framework</a>
-                <a href="asd">Documentation</a>
+                <a href="https://github.com/Bulveyz/Bulveyz-Fast">GitHub</a>            
+                <a href="http://bulveyz-fast.ml">Documentation</a>
             </div>
         </div>
     </div>

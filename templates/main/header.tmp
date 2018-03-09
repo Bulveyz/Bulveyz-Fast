@@ -1,0 +1,14 @@
+{% if(auth) %}
+    <div class="container links text-right">
+        <a href="/profile">{{ user.name }}</a>
+        <a href="/logout">LogOut</a>
+    </div>
+{% else %}
+    {% if(authMode == 'true') %}
+        <div class="container links text-right">
+            <a href="login">LogIn</a>
+            <a href="register">SignUp</a>    
+        </div>
+    {% endif %}
+{% endif %}
+
