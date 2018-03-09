@@ -13,7 +13,7 @@
 <body>
 <main>
     <div class="center_block">
-        <div class="hello" data-aos="fade" data-aos-duration="2000">
+        <div class="hello" data-aos="fade" data-aos-duration="1000">
             <form action="" method="post">
                 <h1 class="text-center">Restore</h1>
                 <label>New password</label>

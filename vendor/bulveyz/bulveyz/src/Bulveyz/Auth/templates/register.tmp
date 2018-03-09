@@ -13,12 +13,12 @@
 <body>
 <main>
     <div class="center_block">
-        <div class="hello" data-aos="fade" data-aos-duration="2000">
+        <div class="hello" data-aos="fade" data-aos-duration="1000">
             <form action="" method="post">
                 <h1 class="text-center">SignUp</h1>
                 <label>Login:</label>
                 <div class="input-group">
-                    <input type="text" class="form-control" name="login" value="{{ login }}" required>
+                    <input type="text" class="form-control" name="name" value="{{ name }}" required>
                 </div>
                 <br>
                 <label>Email:</label>
@@ -33,7 +33,7 @@
                 <br>
                 <label>Confirm Password:</label>
                 <div class="input-group">
-                    <input type="password" class="form-control" name="password2" required>
+                    <input type="password" class="form-control" name="confirmPassword" required>
                 </div>
                 <br>
                 <div class="input-group justify-content-end">

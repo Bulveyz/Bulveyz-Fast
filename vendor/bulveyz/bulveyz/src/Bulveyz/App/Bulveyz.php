@@ -42,10 +42,9 @@ class Bulveyz
     self::$instance->db = new Db(getenv('DB_HOST'), getenv('DB_NAME'), getenv('DB_USER'), getenv('DB_PASSWORD'));
     self::$instance->db->connect();
 
-
     if (getenv('AUTH') == 'true') {
       self::$instance->auth = new Auth();
-      self::$instance->auth->authStart();
+      self::$instance->auth->authorization();
     }
 
     self::$instance->router = new RouterCollection();

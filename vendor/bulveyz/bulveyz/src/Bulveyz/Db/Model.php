@@ -89,6 +89,8 @@ class Model
     foreach ($params as $param => $value) {
       $create->$param = $value;
     }
+    $create->created_at = time();
+    $create->updated_at = time();
     R::store($create);
   }
 
@@ -105,6 +107,7 @@ class Model
     foreach ($params as $param => $value) {
       $change->$param = $value;
     }
+    $change->updated_at = time();
     R::store($change);
   }
 

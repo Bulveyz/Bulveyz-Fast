@@ -39,8 +39,8 @@ use RedBeanPHP\R;
 
     if ($startup >= 6)
     {
-      $delte = R::findOne('last', 'ip = ?', array($_SERVER['SERVER_ADDR']));
-      R::trash($delte);
+      $delete = R::findOne('last', 'ip = ?', array($_SERVER['SERVER_ADDR']));
+      R::trash($delete);
     }
   }
 }

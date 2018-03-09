@@ -13,12 +13,12 @@
 <body>
 <main>
     <div class="center_block">
-        <div class="hello" data-aos="fade" data-aos-duration="2000">
+        <div class="hello" data-aos="fade" data-aos-duration="1000">
             <form action="" method="post">
                 <h1 class="text-center">LogIn</h1>
                 <label>Email:</label>
                 <div class="input-group">
-                    <input type="email" class="form-control" name="email">
+                    <input type="email" class="form-control" name="email" value="{{ email }}">
                 </div>
                 <br>
                 <label>Password:</label>
