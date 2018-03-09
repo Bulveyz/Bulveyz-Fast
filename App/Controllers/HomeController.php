@@ -2,7 +2,7 @@
 
 namespace Controllers;
 
-use Bulveyz\Auth\Auth;
+use Bulveyz\Middleware\Middleware;
 
 class HomeController extends Controller
 {
@@ -11,7 +11,7 @@ class HomeController extends Controller
   {
     $this->render('hello', [
       'authMode' => getenv('AUTH'),
-      'auth' => Auth::auth()
+      'auth' => Middleware::check('auth')
     ]);
   }
 }
