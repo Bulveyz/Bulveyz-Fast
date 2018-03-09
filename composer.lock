@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "13a50b94b1dd5914fae5850f0351a5c1",
+    "content-hash": "2a8e0db2a699eafb5cf1fe51f0dc9fda",
     "packages": [
         {
             "name": "bulveyz/bulveyz",
-            "version": "1.0",
+            "version": "1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Bulveyz/Bulveyz.git",
-                "reference": "16a4a195a80e0c706b497b6b2d7c6eb3e05ee112"
+                "reference": "660809b111ad6e71326c7b021269c3db887c0a36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Bulveyz/Bulveyz/zipball/16a4a195a80e0c706b497b6b2d7c6eb3e05ee112",
-                "reference": "16a4a195a80e0c706b497b6b2d7c6eb3e05ee112",
+                "url": "https://api.github.com/repos/Bulveyz/Bulveyz/zipball/660809b111ad6e71326c7b021269c3db887c0a36",
+                "reference": "660809b111ad6e71326c7b021269c3db887c0a36",
                 "shasum": ""
             },
             "require": {
@@ -47,7 +47,7 @@
                     "email": "rus131354@icloud.com"
                 }
             ],
-            "time": "2018-03-04T14:53:40+00:00"
+            "time": "2018-03-09T17:11:26+00:00"
         },
         {
             "name": "gabordemooij/redbean",
@@ -150,20 +150,20 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.23.0",
+            "version": "1.24.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "4a874a39b2b00d7e0146cd46fab6f47c41ce9e65"
+                "reference": "ef12cbd8ba5ce624f0a6a95e0850c4cc13e71e41"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/4a874a39b2b00d7e0146cd46fab6f47c41ce9e65",
-                "reference": "4a874a39b2b00d7e0146cd46fab6f47c41ce9e65",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/ef12cbd8ba5ce624f0a6a95e0850c4cc13e71e41",
+                "reference": "ef12cbd8ba5ce624f0a6a95e0850c4cc13e71e41",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0",
+                "php": ">=5.3.9",
                 "symfony/translation": "~2.6 || ~3.0 || ~4.0"
             },
             "require-dev": {
@@ -199,7 +199,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2018-02-28T09:22:05+00:00"
+            "time": "2018-03-09T15:49:34+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -262,7 +262,7 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v4.0.5",
+            "version": "v4.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
