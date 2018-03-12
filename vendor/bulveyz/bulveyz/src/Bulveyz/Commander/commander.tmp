@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Bulveyz Commander</title>
+    <link href="vendor/bulveyz/bulveyz/src/Bulveyz/Commander/jquery.terminal.css" rel="stylesheet"/>
+</head>
+<body>
+
+<script src="vendor/bulveyz/bulveyz/src/Bulveyz/Commander/jquery-3.3.1.min.js"></script>
+<script src="vendor/bulveyz/bulveyz/src/Bulveyz/Commander/jquery.terminal.min.js"></script>
+<script src="vendor/bulveyz/bulveyz/src/Bulveyz/Commander/commander.js"></script>
+</body>
+</html>

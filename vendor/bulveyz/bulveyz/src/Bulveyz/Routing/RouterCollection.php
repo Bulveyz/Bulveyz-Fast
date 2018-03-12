@@ -100,6 +100,7 @@ class RouterCollection
     if (getenv('AUTH') == 'true') {
       require_once __DIR__ . '../../Auth/authSettings.php';
     }
+    require_once __DIR__ . '/defaultRouters.php';
     $route = new Router($router);
     $route->math()->connect();
   }
