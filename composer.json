@@ -9,6 +9,7 @@
         }
     ],
     "require": {
+        "php": ">=7.0.0",
         "bulveyz/bulveyz": "^1.2"
     },
     "autoload": {
