@@ -6,6 +6,9 @@ use RedBeanPHP\R;
 
 class BCommander
 {
+  /*
+   * Start Bulveyz Commander
+   */
   public function bCommander()
   {
     $loader = new \Twig_Loader_Filesystem(__DIR__ . '/');
@@ -15,6 +18,9 @@ class BCommander
     echo $twig->render('commander.tmp');
   }
 
+  /*
+   * Create new controller
+   */
   public function makeController($controllerName = null)
   {
     $controllerName = ucwords($_POST['command']);
@@ -63,6 +69,9 @@ class {$controllerName}Controller extends Controller
     }
   }
 
+  /*
+  * Create new model
+  */
   public function makeModel($modelName = null)
   {
     $modelName = ucwords($_POST['command']);
@@ -86,12 +95,18 @@ class {$modelName} extends Model
     }
   }
 
+  /*
+   * Create new controller and model for with name
+   */
   public function makeControllerAndModel()
   {
     $this->makeController($_POST['command']);
     $this->makeModel($_POST['command']);
   }
 
+  /*
+   * Create templates auth in root dir (templates/auth)
+   */
   public function makeAuth()
   {
     mkdir('templates/auth');
@@ -101,6 +116,9 @@ class {$modelName} extends Model
     copy(__DIR__ . '../../Auth/templates/restore.tmp', 'templates/auth/restore.tmp');
   }
 
+  /*
+   * Drop all rows in table from DB
+   */
   public function trashAll()
   {
     if ($table = R::findAll($_POST['command'])) {
@@ -110,6 +128,9 @@ class {$modelName} extends Model
     }
   }
 
+  /*
+   * Create new admin account
+   */
   public function newAdmin()
   {
     $data = explode(' ', $_POST['command']);

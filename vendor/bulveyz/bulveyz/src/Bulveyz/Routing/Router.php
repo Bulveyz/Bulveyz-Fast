@@ -109,7 +109,7 @@ class Router
       } elseif($this->check($this->routerCollection->getAllRoutes(), parse_url($_SERVER['REQUEST_URI'])['path'])) {
         exit('HTTP method not allowed');
       } else {
-        exit('Request Not Found');
+        exit('Route Not Found');
       }
     }
   }
