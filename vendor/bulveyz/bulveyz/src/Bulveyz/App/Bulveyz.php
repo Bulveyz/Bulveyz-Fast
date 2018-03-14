@@ -4,7 +4,7 @@ namespace Bulveyz\App;
 
 use Dotenv\Dotenv;
 use Bulveyz\Db\Db;
-use Bulveyz\Auth\Auth;
+use Bulveyz\Auth\Authorization;
 use Bulveyz\Routing\RouterCollection;
 
 class Bulveyz
@@ -21,8 +21,8 @@ class Bulveyz
   /** @var Db */
   public $db;
 
-  /** @var Auth */
-  public $auth;
+  /** @var Authorization */
+  public $authorization;
 
   /** @var RouterCollection */
   public $router;
@@ -34,6 +34,7 @@ class Bulveyz
    */
   public static function run()
   {
+
     self::$instance = new self();
 
     self::$instance->dotenv = new Dotenv('./');
@@ -43,8 +44,8 @@ class Bulveyz
     self::$instance->db->connect();
 
     if (getenv('AUTH') == 'true') {
-      self::$instance->auth = new Auth();
-      self::$instance->auth->authorization();
+      self::$instance->authorization = new Authorization();
+      self::$instance->authorization->authorization();
     }
 
     self::$instance->router = new RouterCollection();

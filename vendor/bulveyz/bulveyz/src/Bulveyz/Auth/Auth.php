@@ -6,7 +6,7 @@ ob_start();
 
 use RedBeanPHP\R;
 
-class Auth
+trait Auth
 {
 
   public $errors = [];
@@ -44,82 +44,85 @@ class Auth
 
   public function signUp()
   {
-    if ($_POST['name'] == '' || $_POST['email'] == '' || $_POST['password'] == '' || $_POST['confirmPassword'] == '') {
-      $this->errors[] = 'Fill in all the fields';
-    }
-    if (R::count('users', 'name = ?', array($_POST['name'])) > 0) {
-      $this->errors[] = 'A user with this name already exists';
-    }
-    if (R::count('users', 'email = ?', array($_POST['email'])) > 0) {
-      $this->errors[] = 'This account is already taken! Please Login';
-    }
-    if ($_POST['password'] != $_POST['confirmPassword']) {
-      $this->errors[] = 'The passwords you entered do not match!';
-    }
-    if (strlen($_POST['password']) < 8) {
-      $this->errors[] = 'The password must contain at least 8 characters!';
-    }
+    if (isset($_POST['signUp'])) {
+      if ($_POST['name'] == '' || $_POST['email'] == '' || $_POST['password'] == '' || $_POST['confirmPassword'] == '') {
+        $this->errors[] = 'Fill in all the fields';
+      }
+      if (R::count('users', 'name = ?', array($_POST['name'])) > 0) {
+        $this->errors[] = 'A user with this name already exists';
+      }
+      if (R::count('users', 'email = ?', array($_POST['email'])) > 0) {
+        $this->errors[] = 'This account is already taken! Please Login';
+      }
+      if ($_POST['password'] != $_POST['confirmPassword']) {
+        $this->errors[] = 'The passwords you entered do not match!';
+      }
+      if (strlen($_POST['password']) < 8) {
+        $this->errors[] = 'The password must contain at least 8 characters!';
+      }
 
-    if (empty($this->errors)) {
-      $createUser = R::dispense('users');
-      $createUser->name = strip_tags($_POST['name']);
-      $createUser->email = strip_tags($_POST['email']);
-      $createUser->password = password_hash(strip_tags($_POST['password']), PASSWORD_DEFAULT);
-      R::store($createUser);
+      if (empty($this->errors)) {
+        $createUser = R::dispense('users');
+        $createUser->name = strip_tags($_POST['name']);
+        $createUser->email = strip_tags($_POST['email']);
+        $createUser->password = password_hash(strip_tags($_POST['password']), PASSWORD_DEFAULT);
+        R::store($createUser);
 
-      redirect('/login');
-    } else {
-      echo "<div class='alert alert-danger' role='alert'>" . array_shift($this->errors) . "</div>";
+        redirect('/login');
+      } else {
+        echo "<div class='alert alert-danger' role='alert'>" . array_shift($this->errors) . "</div>";
+      }
     }
   }
 
   public function signIn()
   {
-    if ($_POST['email'] == '' || $_POST['password'] == '') {
-      $this->errors[] = 'Fill in all the fields';
-    } else {
-      $this->loadUser = R::findOne('users', 'email = ?', array($_POST['email']));
-    }
-    if (R::count('users', 'email = ?', array($_POST['email'])) == 0) {
-      $this->errors[] = 'Account not found! You can <a href='.'/register'.'>register new account</a>';
-    }
-    if (!password_verify($_POST['password'], $this->loadUser['password'])) {
-      $this->errors[] = 'Wrong login or password';
-    }
-
-    if (empty($this->errors)) {
-      $find = R::findOne('authorization', 'user_id = ?', array($this->loadUser['id']));
-      if ($find) {
-        R::trash($find);
+    if (isset($_POST['signIn'])) {
+      if ($_POST['email'] == '' || $_POST['password'] == '') {
+        $this->errors[] = 'Fill in all the fields';
+      } else {
+        $this->loadUser = R::findOne('users', 'email = ?', array($_POST['email']));
+      }
+      if (R::count('users', 'email = ?', array($_POST['email'])) == 0) {
+        $this->errors[] = 'Account not found! You can <a href=' . '/register' . '>register new account</a>';
+      }
+      if (!password_verify($_POST['password'], $this->loadUser['password'])) {
+        $this->errors[] = 'Wrong login or password';
       }
 
-      $this->token = token();
-
-      $authorization = R::dispense('authorization');
-      $authorization->user_id = $this->loadUser['id'];
-      $authorization->token = $this->token;
-      $authorization->time = time();
-
-      if (R::store($authorization)) {
-        $_SESSION['auth'] = [
-          'id' => $this->loadUser['id'],
-          'name' => $this->loadUser['name'],
-          'password' => $this->loadUser['password'],
-          'token' => $this->token
-        ];
-
-        if (isset($_POST['remember']))
-        {
-          setcookie('auth',$this->token, time() + 3600 * 24 * 3);
-          ob_end_flush();
+      if (empty($this->errors)) {
+        $find = R::findOne('authorization', 'user_id = ?', array($this->loadUser['id']));
+        if ($find) {
+          R::trash($find);
         }
 
-        redirect('/');
+        $this->token = token();
+
+        $authorization = R::dispense('authorization');
+        $authorization->user_id = $this->loadUser['id'];
+        $authorization->token = $this->token;
+        $authorization->time = time();
+
+        if (R::store($authorization)) {
+          $_SESSION['auth'] = [
+              'id' => $this->loadUser['id'],
+              'name' => $this->loadUser['name'],
+              'password' => $this->loadUser['password'],
+              'token' => $this->token
+          ];
+
+          if (isset($_POST['remember'])) {
+            setcookie('auth', $this->token, time() + 3600 * 24 * 3);
+            ob_end_flush();
+          }
+
+          redirect('/');
+        } else {
+          exit('Error authorization');
+        }
       } else {
-        exit('Error authorization');
+        echo "<div class='alert alert-danger' role='alert'>" . array_shift($this->errors) . "</div>";
       }
-    } else {
-      echo "<div class='alert alert-danger' role='alert'>" . array_shift($this->errors) . "</div>";
     }
   }
 
@@ -224,11 +227,7 @@ class Auth
 
   public function authorization()
   {
-    if (isset($_POST['signUp'])) {
-      $this->signUp();
-    } elseif (isset($_POST['signIn'])) {
-      $this->signIn();
-    } elseif(isset($_SESSION['auth'])) {
+     if (isset($_SESSION['auth'])) {
       $this->checkAuthWithSession();
     } elseif (isset($_COOKIE['auth'])) {
       $this->checkAuthWithCookie();

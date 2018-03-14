@@ -2,6 +2,8 @@
 
 namespace Bulveyz\Routing;
 
+use Bulveyz\Middleware\Middleware;
+
 class Controller
 {
   public $params = [];
@@ -27,7 +29,7 @@ class Controller
     $twig = new \Twig_Environment($loader, array(
         'cache' => false
     ));
-
+    $twig->addGlobal('middleware', new Middleware());
     echo $twig->render($view . '.tmp', $this->params);
 
   }

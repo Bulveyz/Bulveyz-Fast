@@ -8,11 +8,13 @@
     <link rel="stylesheet" href="libs/bootstrap.css">
     <link rel="stylesheet" href="libs/aos.css">
     <link rel="stylesheet" href="css/main.css">
-    <title>Document</title>
+    <title>Welcome</title>
 </head>
 <body>
-<main>
+<header>
     {% include 'main/header.tmp' %}
+</header>
+<main>
     <div class="center_block">
         <div class="hello" data-aos="fade" data-aos-duration="2000">
             <h1 class="text-center">Bulveyz</h1>
@@ -21,7 +23,7 @@
             </p>
 
             <div class="hello__link text-center">
-                <a href="https://github.com/Bulveyz/Bulveyz-Fast">GitHub</a>            
+                <a href="https://github.com/Bulveyz/Bulveyz-Fast">GitHub</a>
                 <a href="http://bulveyz-fast.ml">Documentation</a>
             </div>
         </div>

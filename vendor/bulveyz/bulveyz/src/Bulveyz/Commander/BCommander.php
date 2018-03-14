@@ -6,6 +6,10 @@ use RedBeanPHP\R;
 
 class BCommander
 {
+  public $controllerName;
+  public $modelName;
+  public $errors = []; 
+  
   /*
    * Start Bulveyz Commander
    */
@@ -24,48 +28,20 @@ class BCommander
   public function makeController($controllerName = null)
   {
     $controllerName = ucwords($_POST['command']);
-
-    if ($controllerName == '') {
-      echo 'Controller name is empty!';
-      exit();
+    $this->controllerName = $controllerName;
+    
+    if (file_exists("App/Controllers/{$this->controllerName}Controller.php")) {
+      $this->errors[] = "The {$this->controllerName}Controller already exists!";
+    } elseif (strripos($this->controllerName, '_') == 0) {
+      $this->controllerName = ucwords(str_replace('_', '', $this->controllerName));
     }
-
-    if (!file_exists("App/Controllers/{$controllerName}Controller.php")) {
-      $controllerPath = fopen("App/Controllers/{$controllerName}Controller.php", "w");
-      $controllerContent = "<?php
-namespace Controllers;
-
-class {$controllerName}Controller extends Controller
-{
-  public function actionIndex()
-  {
-  
-  }
-  
-  public function actionShow()
-  {
-  
-  }
-  
-  public function actionCreate()
-  {
-  
-  }
-  
-  public function actionUpdate()
-  {
-  
-  }
-  
-  public function actionDelete()
-  {
-  
-  }
-}";
-    fwrite($controllerPath, $controllerContent);
-    fclose($controllerPath);
+    
+    if (!empty($this->errors)) {
+      echo array_shift($this->errors);
     } else {
-      echo "Controller {$controllerName} already exists!";
+      $newControllerTemplate = file_get_contents(__DIR__ . '/templates/makeController.txt');
+      $newController = str_replace('ControllerName', $this->controllerName, $newControllerTemplate);
+      file_put_contents("App/Controllers/{$this->controllerName}Controller.php", $newController);
     }
   }
 
@@ -75,24 +51,23 @@ class {$controllerName}Controller extends Controller
   public function makeModel($modelName = null)
   {
     $modelName = ucwords($_POST['command']);
-    if ($modelName == '') {
-      echo 'Model name is empty!';
-      exit();
-    }
-    if (!file_exists("App/Models/{$modelName}.php")) {
-      $modelPath = fopen("App/Models/{$modelName}.php", "w");
-      $modelContent = "<?php
-namespace Model;
 
-class {$modelName} extends Model
-{
-  
-}";
-      fwrite($modelPath, $modelContent);
-      fclose($modelPath);
-    } else {
-      echo "Model {$modelName} already exists!";
+    $this->$modelName = $modelName;
+
+    if (file_exists("App/Models/{$this->$modelName}.php")) {
+      $this->errors[] = "The model {$this->$modelName} already exists!";
+    } elseif (strripos($this->$modelName, '_') == 0) {
+      $this->$modelName = ucwords(str_replace('_', '', $this->$modelName));
     }
+
+    if (!empty($this->errors)) {
+      echo array_shift($this->errors);
+    } else {
+      $newModelTemplate = file_get_contents(__DIR__ . '/templates/makeModel.txt');
+      $newModel = str_replace('ModelName', $this->$modelName, $newModelTemplate);
+      file_put_contents("App/Models/{$this->$modelName}.php", $newModel);
+    }
+
   }
 
   /*
@@ -109,11 +84,24 @@ class {$modelName} extends Model
    */
   public function makeAuth()
   {
+
+    $authControllerTemplate = file_get_contents(__DIR__ . '../../Auth/templates/AuthController.txt');
+    file_put_contents("App/Controllers/AuthController.php", $authControllerTemplate);
+
+    $authRoutes = file_get_contents(__DIR__ . '../../Auth/templates/authRoutes.txt');
+    file_put_contents('./routes/web.php', $authRoutes, FILE_APPEND);
+
+    $headerComponent = file_get_contents(__DIR__ . '../../Auth/templates/header.txt');
+    file_put_contents("templates/main/header.tmp", $headerComponent);
+
+    $welcomeTemplate = file_get_contents(__DIR__ . '../../Auth/templates/welcome.txt');
+    file_put_contents("templates/welcome.tmp", $welcomeTemplate);
+
     mkdir('templates/auth');
-    copy(__DIR__ . '../../Auth/templates/login.tmp', 'templates/auth/login.tmp');
-    copy(__DIR__ . '../../Auth/templates/register.tmp', 'templates/auth/register.tmp');
-    copy(__DIR__ . '../../Auth/templates/reset.tmp', 'templates/auth/reset.tmp');
-    copy(__DIR__ . '../../Auth/templates/restore.tmp', 'templates/auth/restore.tmp');
+    copy(__DIR__ . '../../Auth/templates/login.txt', 'templates/auth/login.tmp');
+    copy(__DIR__ . '../../Auth/templates/register.txt', 'templates/auth/register.tmp');
+    copy(__DIR__ . '../../Auth/templates/reset.txt', 'templates/auth/reset.tmp');
+    copy(__DIR__ . '../../Auth/templates/restore.txt', 'templates/auth/restore.tmp');
   }
 
   /*
@@ -125,34 +113,6 @@ class {$modelName} extends Model
       R::trashAll($table);
     } else {
       echo 'Table not found or empty!';
-    }
-  }
-
-  /*
-   * Create new admin account
-   */
-  public function newAdmin()
-  {
-    $data = explode(' ', $_POST['command']);
-
-    if (count($data) == 3)
-    {
-      if ($data[2] == getenv('PROJECT_KEY')) {
-        if (R::count('admins', 'name = ?', array($data[0]))  > 0)
-        {
-          echo 'This name already exists!';
-        }
-        else {
-          $add = R::dispense('admins');
-          $add->name = $data[0];
-          $add->password = password_hash($data[1], PASSWORD_DEFAULT);
-          R::store($add);
-        }
-      } else {
-        echo 'Project Key incorrect!';
-      }
-    } else {
-      echo 'Input all data!';
     }
   }
 }

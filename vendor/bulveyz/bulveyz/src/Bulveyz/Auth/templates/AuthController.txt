@@ -1,0 +1,45 @@
+<?php
+
+namespace Controllers;
+
+use Bulveyz\Auth\Auth;
+use Bulveyz\Middleware\Middleware;
+
+class AuthController extends Controller
+{
+  use Auth;
+
+  public function actionLogin()
+  {
+    Middleware::access("guest");
+    $this->signIn();
+    $this->render("auth/login");
+  }
+
+  public function actionRegister()
+  {
+    Middleware::access("guest");
+    $this->signUp();
+    $this->render("auth/register");
+  }
+
+  public function actionReset()
+  {
+    Middleware::access("guest");
+    $this->requestReset();
+    $this->render("auth/reset");
+  }
+
+  public function actionRestore($req)
+  {
+    Middleware::access("guest");
+    $this->resetPassword($req->id);
+    $this->render("auth/restore");
+  }
+
+  public function actionLogout()
+  {
+    Middleware::access("auth");
+    $this->userExit();
+  }
+}

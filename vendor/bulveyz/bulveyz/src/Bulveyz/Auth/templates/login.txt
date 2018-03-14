@@ -11,6 +11,9 @@
     <title>Login</title>
 </head>
 <body>
+<header>
+    {% include 'main/header.tmp' %}
+</header>
 <main>
     <div class="center_block">
         <div class="hello" data-aos="fade" data-aos-duration="1000">

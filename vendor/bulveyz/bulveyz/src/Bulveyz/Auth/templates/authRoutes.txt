@@ -1,0 +1,8 @@
+/*
+ * Routes for authorization
+ */
+$router->any('login', 'Auth@login');
+$router->any('register', 'Auth@register');
+$router->any('reset', 'Auth@reset');
+$router->any('restore/{token}', 'Auth@restore');
+$router->get('/logout', 'Auth@logout');
