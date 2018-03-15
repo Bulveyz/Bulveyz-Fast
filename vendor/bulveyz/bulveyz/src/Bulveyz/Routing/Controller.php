@@ -8,6 +8,8 @@ class Controller
 {
   public $params = [];
   public $path;
+  public $addGlobal = [];
+  public $addGlobalClass = [];
 
   /**
    * Render
@@ -30,7 +32,30 @@ class Controller
         'cache' => false
     ));
     $twig->addGlobal('middleware', new Middleware());
+    foreach($this->addGlobal as $addGlobal) {
+       $twig->addGlobal($addGlobal['name'], $addGlobal['globalVar']);
+    }
+    foreach($this->addGlobalClass as $addGlobalClass) {
+      $twig->addGlobal($addGlobalClass['name'], new $addGlobalClass['globalClass']());
+    }
+
     echo $twig->render($view . '.tmp', $this->params);
 
+  }
+
+  public function addGlobal($newGlobalName, $newGlobal)
+  {
+    $this->addGlobal[] = [
+      'name' => $newGlobalName,
+      'globalVar' => $newGlobal
+    ];
+  }
+
+  public function addGlobalClass($newGlobalClassName, $newGlobalClass)
+  {
+    $this->addGlobalClass[] = [
+        'name' => $newGlobalClassName,
+        'globalClass' => $newGlobalClass
+    ];
   }
 }

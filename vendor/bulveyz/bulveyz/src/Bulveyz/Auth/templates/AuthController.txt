@@ -9,19 +9,25 @@ class AuthController extends Controller
 {
   use Auth;
 
-  public function actionLogin()
+ public function actionLogin()
   {
     Middleware::access("guest");
     $this->signIn();
-    $this->render("auth/login");
+    $this->render("auth/login", [
+      'email' => @$_POST['email']
+    ]);
   }
 
   public function actionRegister()
   {
     Middleware::access("guest");
     $this->signUp();
-    $this->render("auth/register");
+    $this->render("auth/register", [
+      'name' => @$_POST['name'],
+      'email' => @$_POST['email']
+    ]);
   }
+
 
   public function actionReset()
   {

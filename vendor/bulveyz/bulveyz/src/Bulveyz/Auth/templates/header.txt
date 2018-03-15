@@ -1,11 +1,22 @@
-{% if(middleware.check('auth')) %}
-    <div class="container links text-right">
-        <a href="/profile">{{ user.name }}</a>
-        <a href="/logout">LogOut</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Bulveyz</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+        {% if(middleware.check('auth')) %}
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">LogOut</a>
+            </li>
+            {% else %}    
+            <li class="nav-item">
+                <a class="nav-link" href="login">LogIn</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="register">SignUp</a>
+            </li>
+            {% endif %}
+        </ul>
     </div>
-{% else %}
-        <div class="container links text-right">
-            <a href="login">LogIn</a>
-            <a href="register">SignUp</a>    
-        </div>
-{% endif %}
+</nav>

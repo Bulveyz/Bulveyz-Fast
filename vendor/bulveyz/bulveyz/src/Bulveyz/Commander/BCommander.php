@@ -84,24 +84,36 @@ class BCommander
    */
   public function makeAuth()
   {
+    if (file_exists('App/Controllers/AuthController.php') || file_exists('templates/auth')) {
+      $this->errors[] = 'Authorization has already been carried out or there are custom authorization files in the project!';
+    }
+    if (!empty($this->errors)) {
+      echo array_shift($this->errors);
+      exit();
+    } else {
+      $filename = __DIR__ . '../../App/Bulveyz.php';
+      $file = file($filename);
+      $file[36] .= file_get_contents(__DIR__ . '../../Auth/templates/Bulveyz.txt');
+      file_put_contents($filename, $file);
 
-    $authControllerTemplate = file_get_contents(__DIR__ . '../../Auth/templates/AuthController.txt');
-    file_put_contents("App/Controllers/AuthController.php", $authControllerTemplate);
+      $authControllerTemplate = file_get_contents(__DIR__ . '../../Auth/templates/AuthController.txt');
+      file_put_contents("App/Controllers/AuthController.php", $authControllerTemplate);
 
-    $authRoutes = file_get_contents(__DIR__ . '../../Auth/templates/authRoutes.txt');
-    file_put_contents('./routes/web.php', $authRoutes, FILE_APPEND);
+      $authRoutes = file_get_contents(__DIR__ . '../../Auth/templates/authRoutes.txt');
+      file_put_contents('./routes/web.php', $authRoutes, FILE_APPEND);
 
-    $headerComponent = file_get_contents(__DIR__ . '../../Auth/templates/header.txt');
-    file_put_contents("templates/main/header.tmp", $headerComponent);
+      $headerComponent = file_get_contents(__DIR__ . '../../Auth/templates/header.txt');
+      file_put_contents("templates/main/header.tmp", $headerComponent);
 
-    $welcomeTemplate = file_get_contents(__DIR__ . '../../Auth/templates/welcome.txt');
-    file_put_contents("templates/welcome.tmp", $welcomeTemplate);
+      $welcomeTemplate = file_get_contents(__DIR__ . '../../Auth/templates/welcome.txt');
+      file_put_contents("templates/welcome.tmp", $welcomeTemplate);
 
-    mkdir('templates/auth');
-    copy(__DIR__ . '../../Auth/templates/login.txt', 'templates/auth/login.tmp');
-    copy(__DIR__ . '../../Auth/templates/register.txt', 'templates/auth/register.tmp');
-    copy(__DIR__ . '../../Auth/templates/reset.txt', 'templates/auth/reset.tmp');
-    copy(__DIR__ . '../../Auth/templates/restore.txt', 'templates/auth/restore.tmp');
+      mkdir('templates/auth');
+      copy(__DIR__ . '../../Auth/templates/login.txt', 'templates/auth/login.tmp');
+      copy(__DIR__ . '../../Auth/templates/register.txt', 'templates/auth/register.tmp');
+      copy(__DIR__ . '../../Auth/templates/reset.txt', 'templates/auth/reset.tmp');
+      copy(__DIR__ . '../../Auth/templates/restore.txt', 'templates/auth/restore.tmp');
+    }
   }
 
   /*

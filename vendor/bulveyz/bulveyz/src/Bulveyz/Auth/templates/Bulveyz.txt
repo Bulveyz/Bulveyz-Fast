@@ -1,0 +1,4 @@
+  
+    self::$instance->authorization = new Authorization();
+    self::$instance->authorization->authorization();
+  
