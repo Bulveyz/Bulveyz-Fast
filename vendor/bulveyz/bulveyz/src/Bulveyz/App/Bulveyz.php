@@ -6,6 +6,7 @@ use Dotenv\Dotenv;
 use Bulveyz\Db\Db;
 use Bulveyz\Auth\Authorization;
 use Bulveyz\Routing\RouterCollection;
+use Bulveyz\Middleware\CsrfSecurity;
 
 class Bulveyz
 {
@@ -17,6 +18,9 @@ class Bulveyz
 
   /** @var Dotenv */
   public $dotenv;
+
+  /** @var CsrfSecurity */
+  public $csrfWather;
 
   /** @var Db */
   public $db;
@@ -35,6 +39,9 @@ class Bulveyz
   public static function run()
   {
     self::$instance = new self();
+
+    self::$instance->csrfWather = new CsrfSecurity();
+    self::$instance->csrfWather->methodWather();
     
     self::$instance->dotenv = new Dotenv('./');
     self::$instance->dotenv->load();

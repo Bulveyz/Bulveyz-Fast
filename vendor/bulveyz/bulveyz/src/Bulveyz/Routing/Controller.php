@@ -3,6 +3,7 @@
 namespace Bulveyz\Routing;
 
 use Bulveyz\Middleware\Middleware;
+use Bulveyz\Middleware\CsrfSecurity;
 
 class Controller
 {
@@ -32,6 +33,7 @@ class Controller
         'cache' => false
     ));
     $twig->addGlobal('middleware', new Middleware());
+    $twig->addGlobal('csrf_token', CsrfSecurity::generateCsrfToken());
     foreach($this->addGlobal as $addGlobal) {
        $twig->addGlobal($addGlobal['name'], $addGlobal['globalVar']);
     }

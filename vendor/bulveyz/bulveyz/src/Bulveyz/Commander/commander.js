@@ -1,6 +1,6 @@
-jQuery(document).ready(function ($) {
+jQuery(document).ready(function($) {
   var id = 1;
-  $('body').terminal(function (command, term) {
+  $('body').terminal(function(command, term) {
     if (command == 'help') {
       term.echo(
         "make controller      <-- create new controller --> \n" +
@@ -14,61 +14,65 @@ jQuery(document).ready(function ($) {
     }
     else if (command == 'make controller') {
       term.push(function (command, term) {
-        $.post('/bcommander/makecontroller', { command: command }).then(function (response) {
-          if (response === '') {
-            term.echo(command.charAt(0).toUpperCase() + command.slice(1) + 'Controller created');
-            term.pop();
-          }
-          else {
-            term.error(response);
-          }
-        });
-      },
-        {
-          prompt: 'Controller name > ',
-          name: 'make controller'
-        });
+            $.post('/bcommander/makecontroller', {command: command}).then(function(response) {
+              if (response === '')
+              {
+                term.echo(command.charAt(0).toUpperCase() + command.slice(1) + 'Controller created');
+                term.pop();
+              }
+              else {
+                term.error(response);
+              }
+            });
+          },
+          {
+            prompt: 'Controller name > ',
+            name: 'make controller'
+          });
     }
     else if (command == 'make model') {
       var history = term.history();
       history.disable();
       term.push(function (command, term) {
-        $.post('/bcommander/makemodel', { command: command }).then(function (response) {
-          if (response === '') {
-            term.echo(command.charAt(0).toUpperCase() + command.slice(1) + ' model created');
-            term.pop();
-            history.enable();
-          }
-          else {
-            term.error(response);
-          }
-        });
-      },
-        {
-          prompt: 'Model name > ',
-          name: 'make model'
-        });
+            $.post('/bcommander/makemodel', {command: command}).then(function(response) {
+              if (response === '')
+              {
+                term.echo(command.charAt(0).toUpperCase() + command.slice(1) + ' model created');
+                term.pop();
+                history.enable();
+              }
+              else {
+                term.error(response);
+              }
+            });
+          },
+          {
+            prompt: 'Model name > ',
+            name: 'make model'
+          });
     }
     else if (command == 'make -c -m') {
       term.push(function (command, term) {
-        $.post('/bcommander/makecontrollerandmodel', { command: command }).then(function (response) {
-          if (response === '') {
-            term.echo(command.charAt(0).toUpperCase() + command.slice(1) + 'Controller and model created');
-            term.pop();
-          }
-          else {
-            term.error(response);
-          }
-        });
-      },
-        {
-          prompt: 'Controller name > ',
-          name: 'make controller and model'
-        });
+            $.post('/bcommander/makecontrollerandmodel', {command: command}).then(function(response) {
+              if (response === '')
+              {
+                term.echo(command.charAt(0).toUpperCase() + command.slice(1) + 'Controller and model created');
+                term.pop();
+              }
+              else {
+                term.error(response);
+              }
+            });
+          },
+          {
+            prompt: 'Controller name > ',
+            name: 'make controller and model'
+          });
     }
     else if (command == 'make auth') {
-      $.get('/bcommander/makeauth', { command: command }).then(function (response) {
-        if (response === '') {
+      $.get('/bcommander/makeauth', {command: command}).then(function(response) {
+        if (response === '')
+        {
           term.echo('Auth created');
         }
         else {
@@ -78,8 +82,9 @@ jQuery(document).ready(function ($) {
     }
     else if (command == 'table trash rows') {
       term.push(function (command, term) {
-        $.post('/bcommander/trashall', { command: command }).then(function (response) {
-          if (response === '') {
+        $.post('/bcommander/trashall', {command: command}).then(function(response) {
+          if (response === '')
+          {
             term.echo('Table rows clear');
             term.pop();
           }
@@ -89,8 +94,27 @@ jQuery(document).ready(function ($) {
         });
       })
     }
-  },
-    {
-      greetings: "Bulveyz Commander ('help' for all commands)"
-    });
+    else if (command == 'new admin') {
+      term.push(function (command, term) {
+            $.post('/bcommander/newadmin', {command: command}).then(function(response) {
+              if (response === '')
+              {
+                term.echo('admin added');
+                term.pop();
+              }
+              else {
+                term.error(response);
+              }
+            });
+          },
+          {
+            prompt: 'Name | Password | Project Key > '
+          });
+    }
+    else {
+      term.echo("unknown command " + command);
+    }
+  }, {
+    greetings: "Bulveyz Commander ('help' for all commands)"
+  });
 });

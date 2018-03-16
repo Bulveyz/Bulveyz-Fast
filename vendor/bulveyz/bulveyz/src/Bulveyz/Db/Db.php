@@ -25,6 +25,5 @@ class Db
   {
     R::setup( 'mysql:host='.$this->host.';'.'dbname='.$this->dbName.'',
         $this->user, $this->password );
-    session_start();
   }
 }

@@ -93,7 +93,7 @@ class BCommander
     } else {
       $filename = __DIR__ . '../../App/Bulveyz.php';
       $file = file($filename);
-      $file[36] .= file_get_contents(__DIR__ . '../../Auth/templates/Bulveyz.txt');
+      $file[50] .= file_get_contents(__DIR__ . '../../Auth/templates/Bulveyz.txt');
       file_put_contents($filename, $file);
 
       $authControllerTemplate = file_get_contents(__DIR__ . '../../Auth/templates/AuthController.txt');
