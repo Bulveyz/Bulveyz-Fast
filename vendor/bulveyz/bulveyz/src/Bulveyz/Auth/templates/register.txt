@@ -18,7 +18,7 @@
     <div class="center_block">
         <div class="hello" data-aos="fade" data-aos-duration="1000">
             <form action="" method="post">
-                {{ csrf_token }}
+                {{ csrf_token | raw }}
                 <h1 class="text-center">SignUp</h1>
                 <label>Login:</label>
                 <div class="input-group">
