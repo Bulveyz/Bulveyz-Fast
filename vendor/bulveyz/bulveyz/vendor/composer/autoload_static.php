@@ -27,6 +27,10 @@ class ComposerStaticInita2a4d6c761c42d60adbeed5d0d828e12
         array (
             'RedBeanPHP\\' => 11,
         ),
+        'P' => 
+        array (
+            'PHPMailer\\PHPMailer\\' => 20,
+        ),
         'D' => 
         array (
             'Dotenv\\' => 7,
@@ -57,6 +61,10 @@ class ComposerStaticInita2a4d6c761c42d60adbeed5d0d828e12
         'RedBeanPHP\\' => 
         array (
             0 => __DIR__ . '/..' . '/gabordemooij/redbean/RedBeanPHP',
+        ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
         'Dotenv\\' => 
         array (
