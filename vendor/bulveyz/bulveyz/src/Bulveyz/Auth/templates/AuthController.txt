@@ -39,7 +39,7 @@ class AuthController extends Controller
   public function actionRestore($req)
   {
     Middleware::access("guest");
-    $this->resetPassword($req->id);
+    $this->resetPassword($req->token);
     $this->render("auth/restore");
   }
 

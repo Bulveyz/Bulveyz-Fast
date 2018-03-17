@@ -5,6 +5,7 @@ namespace Bulveyz\Auth;
 ob_start();
 
 use RedBeanPHP\R;
+use Bulveyz\Mailer\Mailer;
 
 trait Auth
 {
@@ -168,7 +169,14 @@ trait Auth
             'email' => $_POST['email']
         ];
 
-        mail($_POST['email'], 'Reset Password', "Your link for reset password: ".'https://bulveyz2.0.test/restore/'.$_SESSION['reset']['token']."", 'BulveyzTeam');
+        $link = siteURL()."restore/".$_SESSION['reset']['token'];
+        Mailer::smtpStart();
+        Mailer::$mail->addAddress($_POST['email']);    
+        Mailer::$mail->isHTML(true);
+        Mailer::$mail->Subject = 'Password recovery';
+        Mailer::$mail->Body = "<a href='{$link}'>Password recovery link</a>";
+        Mailer::$mail->setFrom(getenv('SMTP_USER_NAME'), 'Password recovery');
+        Mailer::$mail->send();
 
         echo "<div class='alert alert-success' role='alert'>A password recovery link has been sent to the email</div>";
       } else {
