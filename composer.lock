@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b11fde4de3a52e9e7390e3eede25f2c6",
+    "content-hash": "c2dad76da257c2b3c9e16a09a476cd0d",
     "packages": [
         {
             "name": "bulveyz/bulveyz",
-            "version": "1.1",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Bulveyz/Bulveyz.git",
-                "reference": "660809b111ad6e71326c7b021269c3db887c0a36"
+                "reference": "c86eb985e7677da0db01b538f90204ed1b79a9ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Bulveyz/Bulveyz/zipball/660809b111ad6e71326c7b021269c3db887c0a36",
-                "reference": "660809b111ad6e71326c7b021269c3db887c0a36",
+                "url": "https://api.github.com/repos/Bulveyz/Bulveyz/zipball/c86eb985e7677da0db01b538f90204ed1b79a9ee",
+                "reference": "c86eb985e7677da0db01b538f90204ed1b79a9ee",
                 "shasum": ""
             },
             "require": {
@@ -47,7 +47,7 @@
                     "email": "rus131354@icloud.com"
                 }
             ],
-            "time": "2018-03-09T17:11:26+00:00"
+            "time": "2018-03-16T16:03:29+00:00"
         },
         {
             "name": "gabordemooij/redbean",

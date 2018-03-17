@@ -10,7 +10,7 @@
     ],
     "require": {
         "php": ">=7.0.0",
-        "bulveyz/bulveyz": "^1.1"
+        "bulveyz/bulveyz": "^1.0.1"
     },
     "autoload": {
         "psr-4": {
