@@ -43,6 +43,6 @@ class CsrfSecurity
         $_SESSION['csrf_token'] = bin2hex(openssl_random_pseudo_bytes(32));
       }
     }
-    return "<input type='hidden' name='csrf_token' value='{$_SESSION['csrf_token']}'>";
+    return "<input id='csrf_token' type='hidden' name='csrf_token' value='{$_SESSION['csrf_token']}'>";
   }
 }

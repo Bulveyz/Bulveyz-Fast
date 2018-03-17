@@ -1,5 +1,6 @@
 jQuery(document).ready(function($) {
   var id = 1;
+  var token = $('#csrf_token').val();
   $('body').terminal(function(command, term) {
     if (command == 'help') {
       term.echo(
@@ -14,7 +15,7 @@ jQuery(document).ready(function($) {
     }
     else if (command == 'make controller') {
       term.push(function (command, term) {
-            $.post('/bcommander/makecontroller', {command: command}).then(function(response) {
+            $.post('/bcommander/makecontroller', {command: command, csrf_token: token}).then(function(response) {
               if (response === '')
               {
                 term.echo(command.charAt(0).toUpperCase() + command.slice(1) + 'Controller created');
@@ -34,7 +35,7 @@ jQuery(document).ready(function($) {
       var history = term.history();
       history.disable();
       term.push(function (command, term) {
-            $.post('/bcommander/makemodel', {command: command}).then(function(response) {
+            $.post('/bcommander/makemodel', {command: command, csrf_token: token}).then(function(response) {
               if (response === '')
               {
                 term.echo(command.charAt(0).toUpperCase() + command.slice(1) + ' model created');
@@ -53,7 +54,7 @@ jQuery(document).ready(function($) {
     }
     else if (command == 'make -c -m') {
       term.push(function (command, term) {
-            $.post('/bcommander/makecontrollerandmodel', {command: command}).then(function(response) {
+            $.post('/bcommander/makecontrollerandmodel', {command: command, csrf_token: token}).then(function(response) {
               if (response === '')
               {
                 term.echo(command.charAt(0).toUpperCase() + command.slice(1) + 'Controller and model created');
@@ -82,7 +83,7 @@ jQuery(document).ready(function($) {
     }
     else if (command == 'table trash rows') {
       term.push(function (command, term) {
-        $.post('/bcommander/trashall', {command: command}).then(function(response) {
+        $.post('/bcommander/trashall', {command: command, csrf_token: token}).then(function(response) {
           if (response === '')
           {
             term.echo('Table rows clear');
@@ -96,7 +97,7 @@ jQuery(document).ready(function($) {
     }
     else if (command == 'new admin') {
       term.push(function (command, term) {
-            $.post('/bcommander/newadmin', {command: command}).then(function(response) {
+            $.post('/bcommander/newadmin', {command: command, csrf_token: token}).then(function(response) {
               if (response === '')
               {
                 term.echo('admin added');

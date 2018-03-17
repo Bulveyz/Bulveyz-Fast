@@ -3,6 +3,7 @@
 namespace Bulveyz\Commander;
 
 use RedBeanPHP\R;
+use Bulveyz\Middleware\CsrfSecurity;
 
 class BCommander
 {
@@ -19,6 +20,7 @@ class BCommander
     $twig = new \Twig_Environment($loader, array(
         'cache' => false
     ));
+    $twig->addGlobal('csrf_token', CsrfSecurity::generateCsrfToken());
     echo $twig->render('commander.tmp');
   }
 
