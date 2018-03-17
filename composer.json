@@ -13,6 +13,9 @@
         "bulveyz/bulveyz": "1.0.2"
     },
     "autoload": {
+        "files": [
+            "bootstrap/functions.php",
+        ],
         "psr-4": {
             "Controllers\\": "App/Controllers/",
             "Model\\": "App/Models/",

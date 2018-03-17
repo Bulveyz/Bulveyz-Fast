@@ -95,23 +95,6 @@ jQuery(document).ready(function($) {
         });
       })
     }
-    else if (command == 'new admin') {
-      term.push(function (command, term) {
-            $.post('/bcommander/newadmin', {command: command, csrf_token: token}).then(function(response) {
-              if (response === '')
-              {
-                term.echo('admin added');
-                term.pop();
-              }
-              else {
-                term.error(response);
-              }
-            });
-          },
-          {
-            prompt: 'Name | Password | Project Key > '
-          });
-    }
     else {
       term.echo("unknown command " + command);
     }

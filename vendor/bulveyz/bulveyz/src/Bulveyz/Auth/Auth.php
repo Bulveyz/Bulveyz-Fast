@@ -9,11 +9,11 @@ use Bulveyz\Mailer\Mailer;
 
 trait Auth
 {
+  public $errors = []; // Errors Array
+  private $loadUser = null; // Load user data
+  private $token = null; // Token for restore password
 
-  public $errors = [];
-  private $loadUser = null;
-  private $token = null;
-
+  // Set Guest Session and unset
   public function __construct()
   {
     if (isset($_SESSION['auth'])) {
@@ -23,6 +23,7 @@ trait Auth
     }
   }
 
+  // If user LogOut or delete all data auth from table auth
   public function userExit()
   {
     if (isset($_SESSION['auth'])) {
@@ -43,25 +44,36 @@ trait Auth
     redirect('/');
   }
 
+  // Register new User 
   public function signUp()
   {
     if (isset($_POST['signUp'])) {
+      // Сheck for occupancy
       if ($_POST['name'] == '' || $_POST['email'] == '' || $_POST['password'] == '' || $_POST['confirmPassword'] == '') {
         $this->errors[] = 'Fill in all the fields';
-      }
+      } 
+
+      // Check for existence username
       if (R::count('users', 'name = ?', array($_POST['name'])) > 0) {
         $this->errors[] = 'A user with this name already exists';
-      }
+      } 
+
+      // Check for existence email in table
       if (R::count('users', 'email = ?', array($_POST['email'])) > 0) {
         $this->errors[] = 'This account is already taken! Please Login';
       }
+
+       // Check for password math
       if ($_POST['password'] != $_POST['confirmPassword']) {
         $this->errors[] = 'The passwords you entered do not match!';
       }
+
+      // Set min symbols 8 on the password
       if (strlen($_POST['password']) < 8) {
         $this->errors[] = 'The password must contain at least 8 characters!';
       }
 
+      // If All ok
       if (empty($this->errors)) {
         $createUser = R::dispense('users');
         $createUser->name = strip_tags($_POST['name']);
@@ -76,34 +88,44 @@ trait Auth
     }
   }
 
+  // LogIn User
   public function signIn()
   {
     if (isset($_POST['signIn'])) {
+      // Сheck for occupancy
       if ($_POST['email'] == '' || $_POST['password'] == '') {
         $this->errors[] = 'Fill in all the fields';
       } else {
+        // If data > find user on email from table
         $this->loadUser = R::findOne('users', 'email = ?', array($_POST['email']));
       }
+
+      // If user not found
       if (R::count('users', 'email = ?', array($_POST['email'])) == 0) {
         $this->errors[] = 'Account not found! You can <a href=' . '/register' . '>register new account</a>';
       }
+
+      // Check for password math from DB
       if (!password_verify($_POST['password'], $this->loadUser['password'])) {
         $this->errors[] = 'Wrong login or password';
       }
 
+      // If all ok
       if (empty($this->errors)) {
         $find = R::findOne('authorization', 'user_id = ?', array($this->loadUser['id']));
         if ($find) {
           R::trash($find);
         }
 
-        $this->token = token();
+        $this->token = token(); // Create token
 
+        // Write to table new row auth user
         $authorization = R::dispense('authorization');
         $authorization->user_id = $this->loadUser['id'];
         $authorization->token = $this->token;
         $authorization->time = time();
 
+        // If row created
         if (R::store($authorization)) {
           $_SESSION['auth'] = [
               'id' => $this->loadUser['id'],
@@ -112,14 +134,15 @@ trait Auth
               'token' => $this->token
           ];
 
+          // Check is the remember me checkbox
           if (isset($_POST['remember'])) {
             setcookie('auth', $this->token, time() + 3600 * 24 * 3);
             ob_end_flush();
           }
 
-          redirect('/');
+          redirect('/'); // Header to home page
         } else {
-          exit('Error authorization');
+          exit('Error authorization'); // Exit with error
         }
       } else {
         echo "<div class='alert alert-danger' role='alert'>" . array_shift($this->errors) . "</div>";
@@ -127,6 +150,7 @@ trait Auth
     }
   }
 
+  // Check auth User if his is in DB with session
   public function checkAuthWithSession()
   {
     $loadSession = R::findOne('authorization', 'token = ?', array($_SESSION['auth']['token']));
@@ -136,6 +160,7 @@ trait Auth
     }
   }
 
+  // Check auth User with Cookies (if isset remember me)
   public function checkAuthWithCookie()
   {
     $loadSession = R::findOne('authorization', 'token = ?', array($_COOKIE['auth']));
@@ -154,6 +179,7 @@ trait Auth
     }
   }
 
+  // Reset password verify email
   public function requestReset()
   {
     if (isset($_POST['requestReset'])) {
@@ -185,6 +211,7 @@ trait Auth
     }
   }
 
+  // Restore Password (If veryfed email)
   public function resetPassword($token)
   {
     if (isset($_SESSION['reset']) &&  $_SESSION['reset']['token'] == $token) {
@@ -226,6 +253,7 @@ trait Auth
     }
   }
 
+  // Get User data (If isset auth)
   public static function user()
   {
     if (isset($_SESSION['auth'])) {
@@ -233,6 +261,7 @@ trait Auth
     }
   }
 
+  // Setter Check Session Auth
   public function authorization()
   {
      if (isset($_SESSION['auth'])) {

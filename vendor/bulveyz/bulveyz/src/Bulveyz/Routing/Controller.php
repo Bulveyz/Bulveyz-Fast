@@ -24,27 +24,37 @@ class Controller
    */
   public function render($view, $params = [])
   {
+    // Check empty $params or not
     if (isset($params)) {
       $this->params = $params;
     }
 
+    // Init Twig Template Engine   
     $loader = new \Twig_Loader_Filesystem('templates/');
     $twig = new \Twig_Environment($loader, array(
         'cache' => false
     ));
+
+    // Default Global var and classes
     $twig->addGlobal('middleware', new Middleware());
     $twig->addGlobal('csrf_token', CsrfSecurity::generateCsrfToken());
+    $twig->addGlobal('homePath', siteURL());
+
+    // Add global var for all templates
     foreach($this->addGlobal as $addGlobal) {
        $twig->addGlobal($addGlobal['name'], $addGlobal['globalVar']);
     }
+
+    // Add global Class for all templates
     foreach($this->addGlobalClass as $addGlobalClass) {
       $twig->addGlobal($addGlobalClass['name'], new $addGlobalClass['globalClass']());
     }
 
+    // Render template
     echo $twig->render($view . '.tmp', $this->params);
-
   }
 
+  // Function for add global Var
   public function addGlobal($newGlobalName, $newGlobal)
   {
     $this->addGlobal[] = [
@@ -53,6 +63,7 @@ class Controller
     ];
   }
 
+  // Function for add global Class
   public function addGlobalClass($newGlobalClassName, $newGlobalClass)
   {
     $this->addGlobalClass[] = [

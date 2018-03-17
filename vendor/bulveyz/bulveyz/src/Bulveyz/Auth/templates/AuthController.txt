@@ -7,8 +7,10 @@ use Bulveyz\Middleware\Middleware;
 
 class AuthController extends Controller
 {
+  // Incluse Auth Trait
   use Auth;
 
+  // LogIn 
  public function actionLogin()
   {
     Middleware::access("guest");
@@ -18,6 +20,7 @@ class AuthController extends Controller
     ]);
   }
 
+  // Register  
   public function actionRegister()
   {
     Middleware::access("guest");
@@ -28,14 +31,15 @@ class AuthController extends Controller
     ]);
   }
 
-
+  // Reset Password
   public function actionReset()
   {
     Middleware::access("guest");
     $this->requestReset();
     $this->render("auth/reset");
   }
-
+  
+  // Restore Password 
   public function actionRestore($req)
   {
     Middleware::access("guest");
@@ -43,6 +47,7 @@ class AuthController extends Controller
     $this->render("auth/restore");
   }
 
+  // LogOut
   public function actionLogout()
   {
     Middleware::access("auth");

@@ -39,14 +39,17 @@ function token() {
   return str_replace('.', '', $token);
 }
 
+// Preint $_POST array
 function postArray() {
   d($_POST);
 }
 
+// Preint $_GET array
 function getArray() {
   d($_GET);
 }
 
+// Get base domain with HTTP or HTTPS
 function siteURL()
 {
     $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";

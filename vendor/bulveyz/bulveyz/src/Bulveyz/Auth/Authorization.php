@@ -6,6 +6,7 @@ class Authorization
 {
   use Auth;
 
+  // Check Session or Coockeies
   public function authorization()
   {
     if (isset($_SESSION['auth'])) {

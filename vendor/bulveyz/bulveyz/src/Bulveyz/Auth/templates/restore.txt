@@ -5,9 +5,9 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../libs/bootstrap.css">
-    <link rel="stylesheet" href="../libs/aos.css">
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="{{homePath}}libs/bootstrap.css">
+    <link rel="stylesheet" href="{{homePath}}libs/aos.css">
+    <link rel="stylesheet" href="{{homePath}}css/main.css">
     <title>Restore Password</title>
 </head>
 <body>
@@ -40,16 +40,11 @@
     </div>
 </main>
 
-<script src="libs/jquery-3.3.1.min.js"></script>
-<script src="libs/bootstrap.js"></script>
-<script src="libs/aos.js"></script>
-<script src="js/main.js"></script>
+<script src="{{homePath}}libs/jquery-3.3.1.min.js"></script>
+<script src="{{homePath}}libs/bootstrap.js"></script>
+<script src="{{homePath}}libs/aos.js"></script>
+<script src="{{homePath}}js/main.js"></script>
 </body>
 </html>
-
-<script src="../libs/jquery-3.3.1.min.js"></script>
-<script src="../libs/bootstrap.js"></script>
-<script src="../libs/aos.js"></script>
-<script src="../js/main.js"></script>
 </body>
 </html>
