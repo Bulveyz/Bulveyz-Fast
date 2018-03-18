@@ -11,10 +11,10 @@ return array(
     'Symfony\\Component\\Translation\\' => array($vendorDir . '/symfony/translation'),
     'RedBeanPHP\\' => array($vendorDir . '/gabordemooij/redbean/RedBeanPHP'),
     'PHPMailer\\PHPMailer\\' => array($vendorDir . '/phpmailer/phpmailer/src'),
-    'Model\\' => array($baseDir . '/App/Models'),
+    'Model\\' => array($baseDir . '/app/Models'),
     'Dotenv\\' => array($vendorDir . '/vlucas/phpdotenv/src'),
-    'Controllers\\' => array($baseDir . '/App/Controllers'),
-    'Classes\\' => array($baseDir . '/App/Classes'),
+    'Controllers\\' => array($baseDir . '/app/Controllers'),
+    'Classes\\' => array($baseDir . '/app/Classes'),
     'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
     'Bulveyz\\' => array($vendorDir . '/bulveyz/bulveyz/src/Bulveyz'),
 );

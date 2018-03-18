@@ -1,7 +1,7 @@
 {
     "name": "bulveyz/bulveyz-fast",
     "type": "project",
-    "license": "GPLv2",
+    "license": "MIT",
     "authors": [
         {
             "name": "Ruslan Ibragimov",
@@ -17,9 +17,9 @@
             "bootstrap/functions.php"
         ],
         "psr-4": {
-            "Controllers\\": "App/Controllers/",
-            "Model\\": "App/Models/",
-            "Classes\\": "App/Classes/"
+            "Controllers\\": "app/Controllers/",
+            "Model\\": "app/Models/",
+            "Classes\\": "app/Classes/"
         }
     }
 }

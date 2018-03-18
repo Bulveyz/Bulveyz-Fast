@@ -75,7 +75,7 @@ class ComposerStaticInit1ac194f0cba6de230dd5f7d7f4d4c42b
         ),
         'Model\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/App/Models',
+            0 => __DIR__ . '/../..' . '/app/Models',
         ),
         'Dotenv\\' => 
         array (
@@ -83,11 +83,11 @@ class ComposerStaticInit1ac194f0cba6de230dd5f7d7f4d4c42b
         ),
         'Controllers\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/App/Controllers',
+            0 => __DIR__ . '/../..' . '/app/Controllers',
         ),
         'Classes\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/App/Classes',
+            0 => __DIR__ . '/../..' . '/app/Classes',
         ),
         'Carbon\\' => 
         array (

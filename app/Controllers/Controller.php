@@ -3,10 +3,12 @@
 namespace Controllers;
 
 use Bulveyz\Routing\Controller as BaseController;
-class Controller extends BaseController
+use Bulveyz\Routing\ControllerInterface;
+
+class Controller extends BaseController implements ControllerInterface
 {
   public function __construct()
   {
-  	
+
   }
 }
