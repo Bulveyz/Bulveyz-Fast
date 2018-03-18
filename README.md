@@ -12,4 +12,4 @@ Twig - an incredibly light and multifunctional template engine.
 PHPMailler - to work with mail.
 
 # Documentation 
-All functionality and capabilities of the framework you can study on <a href='http://bulveyz-fast.ml/'>Bulveyhttp://bulveyz-fast.ml/introduction</a>
+All functionality and capabilities of the framework you can study on <a href='http://bulveyz-fast.ml/introduction'>Bulvey-fast Documentation</a>
