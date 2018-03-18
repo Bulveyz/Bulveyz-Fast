@@ -11,6 +11,7 @@ class ComposerStaticInit1ac194f0cba6de230dd5f7d7f4d4c42b
         '3917c79c5052b270641b5a200963dbc2' => __DIR__ . '/..' . '/kint-php/kint/init.php',
         '5d19829a470be8487957680913eb4dcc' => __DIR__ . '/..' . '/bulveyz/bulveyz/src/Bulveyz/Helpers/helpers.php',
         '774d5393c486681dc3dbc72e0bbc26ec' => __DIR__ . '/..' . '/bulveyz/bulveyz/src/Bulveyz/Plugins/plugins.php',
+        '5b80b7ff806cab62d9250d0b5c8c1ab1' => __DIR__ . '/../..' . '/bootstrap/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (

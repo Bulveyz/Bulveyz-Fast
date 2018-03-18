@@ -1,17 +1,17 @@
 [
     {
         "name": "bulveyz/bulveyz",
-        "version": "1.0.2",
-        "version_normalized": "1.0.2.0",
+        "version": "1.0.3",
+        "version_normalized": "1.0.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/Bulveyz/Bulveyz.git",
-            "reference": "16db517f87ed96fc62d9c2eb001e224d780d24a1"
+            "reference": "966b35ebabaa1594478416e802a14e7d1f57aeeb"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Bulveyz/Bulveyz/zipball/16db517f87ed96fc62d9c2eb001e224d780d24a1",
-            "reference": "16db517f87ed96fc62d9c2eb001e224d780d24a1",
+            "url": "https://api.github.com/repos/Bulveyz/Bulveyz/zipball/966b35ebabaa1594478416e802a14e7d1f57aeeb",
+            "reference": "966b35ebabaa1594478416e802a14e7d1f57aeeb",
             "shasum": ""
         },
         "require": {
@@ -22,7 +22,7 @@
             "twig/twig": "~2.0",
             "vlucas/phpdotenv": "^2.4"
         },
-        "time": "2018-03-17T10:58:42+00:00",
+        "time": "2018-03-17T17:36:52+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {

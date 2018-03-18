@@ -10,11 +10,11 @@
     ],
     "require": {
         "php": ">=7.0.0",
-        "bulveyz/bulveyz": "1.0.2"
+        "bulveyz/bulveyz": "1.0.3"
     },
     "autoload": {
         "files": [
-            "bootstrap/functions.php",
+            "bootstrap/functions.php"
         ],
         "psr-4": {
             "Controllers\\": "App/Controllers/",
