@@ -12,7 +12,7 @@ Twig - an incredibly light and multifunctional template engine.
 PHPMailler - to work with mail.
 
 # Install Composer
-<pre>composer create-project bulveyz/bulveyz-fast<pre>
+<pre>composer create-project bulveyz/bulveyz-fast</pre>
 
 # Documentation 
 All functionality and capabilities of the framework you can study on <a href='http://bulveyz-fast.ml/introduction'>Bulvey-fast Documentation</a>
