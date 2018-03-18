@@ -1,7 +1,7 @@
 {
     "name": "bulveyz/bulveyz-fast",
     "type": "project",
-    "license": "GPLv2",
+    "license": "MIT",
     "authors": [
         {
             "name": "Ruslan Ibragimov",
