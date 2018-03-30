@@ -10,7 +10,7 @@
     ],
     "require": {
         "php": ">=7.0.0",
-        "bulveyz/bulveyz": "1.0.3"
+        "bulveyz/bulveyz": "1.0.4"
     },
     "autoload": {
         "files": [
