@@ -2,15 +2,22 @@
 
 namespace Bulveyz\Routing;
 
+/*
+ * Router Class
+ *
+ * Processes routes and connects the requested route from the URL of the site
+ */
+
 class Router
 {
-  private $routerCollection;
-  private $handler;
-  private $route;
-  private $routeMethod;
-  public $params = [];
-  private $namespace = 'Controllers';
+  private $routerCollection; // All Routers
+  private $handler; // Function Router
+  private $route; // Route
+  private $routeMethod; // Route Method
+  public $params = []; // If isset params router add to array
+  private $namespace = 'Controllers'; // Path to controllers
 
+  // Load all router from class RouterCollection
   public function __construct(RouterCollection $routerCollection)
   {
     $this->routerCollection = $routerCollection;
@@ -23,6 +30,12 @@ class Router
    * @return bool
    *
    * Check router
+   *
+   * Since the search is performed in certain POST and GET arrays,
+   * the script can raise an error about the route, but the route itself
+   * can be, but not in POST and in GET, then we additionally check whether it
+   * is in the general array for all routes, if there is then the method is not
+   * supported if not then the route can not be found
    */
   public function check($routes, $url)
   {
@@ -45,11 +58,19 @@ class Router
   public function math()
   {
     $url = parse_url($_SERVER['REQUEST_URI'])['path'];
+
+      // If request method page GET
       if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+
+        // Parse route only GET
         foreach ($this->routerCollection->getGetRoutes() as $route) {
+
+          // Replace params route and trim (/)
           $pattern = preg_replace("/\{(.*?)\}/", "(?P<$1>[\w-]+)", $route->route);
           $pattern = "#^". trim($pattern, '/') ."$#";
           preg_match($pattern, trim($url, '/'), $matches);
+
+          // If Route finded
           if ($matches) {
             $this->handler = $route->handler;
             $this->route = $route->route;
@@ -58,11 +79,18 @@ class Router
           }
         }
       }
+      // If request method page POST
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+        // Parse route only POST
         foreach ($this->routerCollection->getPostRoutes() as $route) {
+
+          // Replace params route and trim (/)
           $pattern = preg_replace("/\{(.*?)\}/", "(?P<$1>[\w-]+)", $route->route);
           $pattern = "#^". trim($pattern, '/') ."$#";
           preg_match($pattern, trim($url, '/'), $matches);
+
+          // If Route finded
           if ($matches) {
             $this->handler = $route->handler;
             $this->route = $route->route;
@@ -84,19 +112,25 @@ class Router
     {
       if ($this->route) {
         if ($_SERVER['REQUEST_METHOD'] === $this->routeMethod[0] || $this->routeMethod[0] == 'ANY') {
+
+          // If handler is function
           if (is_callable($this->handler)) {
             call_user_func($this->handler, (object) $this->params[0]);
-          } else {
+          }
+          // // If handler is controller and method name
+          else {
             $controller_data =  explode('@', $this->handler);
             $controller = $this->namespace . '\\' . ucwords($controller_data[0]) . 'Controller';
             $action = 'action' . ucwords($controller_data[1]);
 
+            // If class exists
             if (class_exists($controller)) {
               $controllerInstance = new $controller;
             } else {
               exit('Class Not Found');
             }
 
+            // If method exists
             if (method_exists($controllerInstance, $action))	{
               call_user_func_array([$controllerInstance, $action], [(object) $this->params[0]]);
             }	else {
@@ -106,7 +140,9 @@ class Router
         } else {
           exit('HTTP method not allowed');
         }
-      } elseif($this->check($this->routerCollection->getAllRoutes(), parse_url($_SERVER['REQUEST_URI'])['path'])) {
+      }
+      // If route not found
+      elseif($this->check($this->routerCollection->getAllRoutes(), parse_url($_SERVER['REQUEST_URI'])['path'])) {
         exit('HTTP method not allowed');
       } else {
         exit('Route Not Found');

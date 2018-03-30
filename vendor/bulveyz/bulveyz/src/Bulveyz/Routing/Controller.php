@@ -5,6 +5,14 @@ namespace Bulveyz\Routing;
 use Bulveyz\Middleware\Middleware;
 use Bulveyz\Middleware\CsrfSecurity;
 
+/*
+ * Bace Controller
+ *
+ * It implements the work with templates and works
+ * as the main class of the controller, from the
+ * short it inherits other conocollers
+ */
+
 class Controller
 {
   public $params = [];

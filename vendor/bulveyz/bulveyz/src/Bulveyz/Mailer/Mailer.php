@@ -3,6 +3,13 @@
 namespace Bulveyz\Mailer;
 
 use PHPMailer\PHPMailer\PHPMailer;
+
+/*
+ * Mailer Class
+ *
+ * Simplifies work with the PhpMailer class
+ */
+
 class Mailer
 {
 	public static $mail;

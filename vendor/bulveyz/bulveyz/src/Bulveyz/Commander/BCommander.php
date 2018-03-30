@@ -5,14 +5,26 @@ namespace Bulveyz\Commander;
 use RedBeanPHP\R;
 use Bulveyz\Middleware\CsrfSecurity;
 
+/*
+ * BCommander Console
+ *
+ * BCommander is a console with it you can create controllers,
+ * models and much more, it greatly simplifies the development process,
+ * here is assembled all the functional BCommander
+ */
+
 class BCommander
 {
-  public $controllerName;
-  public $modelName;
-  public $errors = []; 
+  public $controllerName; // Name of Controller
+  public $modelName;  // Name of Model
+  public $errors = []; // Errors Array
   
   /*
    * Start Bulveyz Commander
+   *
+   * Initializing the console. A global function
+   * for generating a CSRF token and the template
+   * itself has also been added
    */
   public function bCommander()
   {
@@ -26,6 +38,11 @@ class BCommander
 
   /*
    * Create new controller
+   *
+   * We check the validity of the data and the presence
+   * of the already existing controller, if all is well,
+   * then replace the controller name with the controller
+   * name in the name that the developer entered
    */
   public function makeController($controllerName = null)
   {
@@ -49,6 +66,11 @@ class BCommander
 
   /*
   * Create new model
+  *
+  * We check the validity of the data and the presence
+  * of the already existing model, if all is well,
+  * then replace the model name with the model
+  * name in the name that the developer entered
   */
   public function makeModel($modelName = null)
   {
@@ -74,6 +96,8 @@ class BCommander
 
   /*
    * Create new controller and model for with name
+   *
+   * Call makeController and makeModel functions
    */
   public function makeControllerAndModel()
   {
@@ -83,6 +107,11 @@ class BCommander
 
   /*
    * Create templates auth in root dir (templates/auth)
+   *
+   * Check whether there is already authorization in
+   * the project, then apply the templates, add the
+   * function of the installation in Bulveyz.php, routes
+   * in web.php and new html templates
    */
   public function makeAuth()
   {

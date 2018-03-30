@@ -2,6 +2,8 @@
 
 namespace Bulveyz\Auth;
 
+// This class is needed to initialize it in core Bulvez
+
 class Authorization
 {
   use Auth;

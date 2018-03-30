@@ -4,6 +4,14 @@ namespace Bulveyz\Db;
 
 use RedBeanPHP\R;
 
+/*
+ * Bace Model Class
+ *
+ * This class contains the basic principle of
+ * the model, it parses the endings in English,
+ * works with tables from the database
+ */
+
 class Model
 {
   /**

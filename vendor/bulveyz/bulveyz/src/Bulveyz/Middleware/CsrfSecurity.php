@@ -8,6 +8,11 @@
 
 namespace Bulveyz\Middleware;
 
+/*
+ * CSRF Class
+ *
+ * Organizes the work of protection against CSRF attacks
+ */
 
 class CsrfSecurity
 {
@@ -18,6 +23,9 @@ class CsrfSecurity
     session_start();
   }
 
+  /*
+   * Checks the request method, if it's POST, then it will require a CSRF token
+   */
   public function methodWather()
   {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -32,6 +40,9 @@ class CsrfSecurity
     }
   }
 
+  /*
+   * Generates a CSRF template for a form field, without it, the POST method will not work
+   */
   public static function generateCsrfToken()
   {
     if (version_compare(PHP_VERSION, '7.0.0', '>=')) {

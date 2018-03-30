@@ -9,7 +9,6 @@ jQuery(document).ready(function($) {
         "make -c -m           <-- create new controller and model --> \n" +
         "make auth            <-- create authorization and templates --> \n" +
         "table trash rows     <-- drop all row from table --> \n" +
-        "new admin            <-- create new admin account --> \n" +
         "exit                 <-- to leave the branch -->"
       );
     }

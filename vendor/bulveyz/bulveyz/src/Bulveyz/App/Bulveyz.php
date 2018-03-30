@@ -8,6 +8,14 @@ use Bulveyz\Auth\Authorization;
 use Bulveyz\Routing\RouterCollection;
 use Bulveyz\Middleware\CsrfSecurity;
 
+/*
+ *  Bulveyz Init
+ *
+ *  Here, all the dependencies of the framework are connected,
+ *  such as security, router, configuration class, mail class
+ *  and others. All of them are vital for the work of Bulveyz
+ */
+
 class Bulveyz
 {
   private static $instance;

@@ -2,6 +2,12 @@
 
 namespace Bulveyz\Routing;
 
+/*
+ * Route Class
+ *
+ * Used as a filter and a template for adding a new route
+ */
+
 class Route extends RouterCollection
 {
   public $route;

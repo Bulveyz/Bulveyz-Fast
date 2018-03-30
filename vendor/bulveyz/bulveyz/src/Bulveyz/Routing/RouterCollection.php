@@ -2,6 +2,12 @@
 
 namespace Bulveyz\Routing;
 
+/*
+ * Routes Collection
+ *
+ * Set new routes and add a arrays
+ */
+
 class RouterCollection
 {
   private $routesGet = [];

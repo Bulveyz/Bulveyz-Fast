@@ -7,6 +7,12 @@ ob_start();
 use RedBeanPHP\R;
 use Bulveyz\Mailer\Mailer;
 
+/*
+ * Authorization Users
+ *
+ * This class contains the entire system and user authentication functions
+ */
+
 trait Auth
 {
   public $errors = []; // Errors Array

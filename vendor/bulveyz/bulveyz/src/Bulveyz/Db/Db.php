@@ -4,6 +4,12 @@ namespace Bulveyz\Db;
 
 use RedBeanPHP\R;
 
+/*
+ * DB Connection
+ *
+ * Implements a connection to the database using RedBeanPHP tools
+ */
+
 class Db
 {
   private $host;

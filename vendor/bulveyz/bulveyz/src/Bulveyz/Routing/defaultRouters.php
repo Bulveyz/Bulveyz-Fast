@@ -2,6 +2,10 @@
 
 use Bulveyz\Commander\BCommander;
 
+/*
+ * Set default routes and functions with methods
+ */
+
 if (getenv('PRODUCTION') == 'false') {
   /*
  * Start Bulveyz Commander
@@ -49,13 +53,5 @@ if (getenv('PRODUCTION') == 'false') {
   $router->post('bcommander/trashall', function(){
     $bCommander = new BCommander();
     $bCommander->trashAll();
-  });
-
-  /*
-   * Create new controller
-   */
-  $router->post('bcommander/newadmin', function(){
-    $bCommander = new BCommander();
-    $bCommander->newAdmin();
   });
 }
